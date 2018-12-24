@@ -1,32 +1,63 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+html,body, #root {
+  width:100%;
+  height: 100%;
+}
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
+  height:100%;
+}
+
+.counter {
+  display:flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width:100%;
 }
 
-.App-link {
-  color: #61dafb;
+.counter__number {
+  font-size: 7rem;
+  background: #fff;
+  color: #3900C6;
+  border-radius: 50%;
+  /* text-align: center; */
+  width: 9rem;
+  line-height: 9rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+body {
+  background: #3900C6;
+  color:#fff;
+  font-family: 'Roboto','Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+button {
+  background:transparent;
+  color:#fff;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  font-size:16px;
+  color: rgba(255,255,255,0.32);
+}
+
+button:hover {
+  color: rgba(255,255,255,0.84);
+}
+
+.quote {
+  max-height:40%;
+}
+
+.buttons {
+  display:flex;
+  max-width: 20%;
+  justify-content: space-between;
+  align-content: flex-end;
+  margin-left:40%;
+  margin-bottom:30px;
+
 }
