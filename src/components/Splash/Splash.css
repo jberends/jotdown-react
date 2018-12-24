@@ -1,0 +1,7 @@
+.Splash {
+  background-image: url("https://source.unsplash.com/1200x800");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}

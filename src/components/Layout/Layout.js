@@ -1,12 +1,12 @@
 import React from "react";
 import Topbar from '../Topbar/Topbar';
-import Backdrop from '../Backdrop/Backdrop';
+import Splash from '../Splash/Splash';
 
 const layout = props => (
   <>
     <div>
         <Topbar/>
-        <Backdrop />
+        <Splash/>
     </div>
     <div className="Main">{props.children}</div>
   </>
