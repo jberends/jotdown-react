@@ -1,7 +1,15 @@
 .Splash {
-  background-image: url("https://source.unsplash.com/1200x800");
+  background-image: url("https://source.unsplash.com/1024x768/?orange,landscape");
+  background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index:-1;
+  transition: opacity 0.3s ease-out;
 }
