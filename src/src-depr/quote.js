@@ -6,6 +6,6 @@ const Quote = ({quote, author}) => {
         <h2>{quote}</h2>
         <h3>{author}</h3>
     </div>)
-}
+};
 
 export default Quote;

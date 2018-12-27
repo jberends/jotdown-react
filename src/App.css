@@ -31,7 +31,9 @@ html,body, #root {
 body {
   /*background: #3900C6;*/
   color:#fff;
-  font-family: 'Roboto','Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+  font-family: 'Roboto','Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-color: #21D4FD;
+  background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
 }
 
 button {
@@ -61,3 +63,6 @@ button:hover {
   margin-bottom:30px;
 
 }
+
+
+

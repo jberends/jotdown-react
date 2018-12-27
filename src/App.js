@@ -6,14 +6,12 @@ import Ideas from "./components/Ideas/Ideas";
 
 class App extends Component {
   render() {
-    return (
-      <div className="App">
+    return <div className="App">
         <Layout>
           <Ideas />
-          <p>hello world</p>
+          <p>button bar</p>
         </Layout>
-      </div>
-    );
+      </div>;
   }
 }
 

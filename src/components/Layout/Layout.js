@@ -2,11 +2,15 @@ import React from "react";
 import Topbar from "../Topbar/Topbar";
 import Splash from "../Splash/Splash";
 
+import './Layout.css';
+
 const layout = props => (
   <>
     <Splash />
-    <Topbar />
-    <div className="Main">{props.children}</div>
+    <div className="Layout">
+      <Topbar />
+      {props.children}
+    </div>
   </>
 );
 

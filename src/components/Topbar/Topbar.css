@@ -1,10 +1,19 @@
 .TopBar {
-    height: 46px;
-    background-color: rgba(0,0,0,0.12);
+  display: flex;
+  height: 46px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.08);
+  justify-content: space-between;
+  opacity: 0.84;
 }
 
 .Account {
-    text-align: right;
-    width: 60px;
-    border: 1px;
+  text-align: right;
+  padding: 8px 8px;
+  opacity: 0.54;
+}
+
+.Account:hover {
+  opacity: 1;
+  transition: opacity 300ms ease-out;
 }

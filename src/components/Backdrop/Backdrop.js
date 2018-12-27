@@ -1,11 +1,7 @@
-import React from 'react';
+import React from "react";
 
 const backdrop = () => {
-    return (
-        <div>
-
-        </div>
-    );
+  return <div />;
 };
 
 export default backdrop;

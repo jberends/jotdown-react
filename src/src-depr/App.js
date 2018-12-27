@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 
 import "./App.css";
 import Button from "./src-depr/button";
@@ -61,18 +61,18 @@ class App extends Component {
 
     return (
       <div className="App">
-          <div className="counter">
-              <p className="counter__number">{counter}</p>
-          </div>
-          <Quote
-              quote={quotes[quoteArrayPosition].quote}
-              author={quotes[quoteArrayPosition].author}
-          />
-          <div className="buttons">
-              <Button Text="Prev Quote" onClick={this.prevQuote}/>
-              <Button Text="Random Quote" onClick={this.randomQuote}/>
-              <Button Text="Next Quote" onClick={this.nextQuote}/>
-          </div>
+        <div className="counter">
+          <p className="counter__number">{counter}</p>
+        </div>
+        <Quote
+          quote={quotes[quoteArrayPosition].quote}
+          author={quotes[quoteArrayPosition].author}
+        />
+        <div className="buttons">
+          <Button Text="Prev Quote" onClick={this.prevQuote} />
+          <Button Text="Random Quote" onClick={this.randomQuote} />
+          <Button Text="Next Quote" onClick={this.nextQuote} />
+        </div>
       </div>
     );
   }
