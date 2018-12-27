@@ -24,6 +24,11 @@ class Ideas extends Component {
     if (localCounter) {
       this.setState({ counter: localCounter });
     }
+    this.randomIdea();
+  }
+
+  componentWillUpdate(nextProps, nextState, nextContext) {
+    localStorage.setItem("counter", nextState.counter)
   }
 
   nextIdea() {
@@ -39,7 +44,6 @@ class Ideas extends Component {
         counter: prevState.counter + 1
       }));
     }
-    localStorage.counter = this.state.counter;
   }
 
   prevIdea() {
@@ -55,7 +59,6 @@ class Ideas extends Component {
         counter: prevState.counter + 1
       }));
     }
-    localStorage.counter = this.state.counter;
   }
 
   randomIdea() {
@@ -65,12 +68,11 @@ class Ideas extends Component {
       ideaArrayPosition: randomIdea,
       counter: prevState.counter + 1
     }));
-    localStorage.counter = this.state.counter;
   }
 
   resetCounter() {
-    this.setState({counter: 1})
-    localStorage.counter = 1
+    this.setState({counter: 1});
+    localStorage.setItem('counter', 1);
   }
 
   render() {

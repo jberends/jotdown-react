@@ -7,13 +7,3 @@
   opacity: 0.84;
 }
 
-.Account {
-  text-align: right;
-  padding: 8px 8px;
-  opacity: 0.54;
-}
-
-.Account:hover {
-  opacity: 1;
-  transition: opacity 300ms ease-out;
-}
