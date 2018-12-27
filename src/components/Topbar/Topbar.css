@@ -1,0 +1,10 @@
+.TopBar {
+    height: 46px;
+    background-color: rgba(0,0,0,0.12);
+}
+
+.Account {
+    text-align: right;
+    width: 60px;
+    border: 1px;
+}

@@ -1,0 +1,43 @@
+[
+  {
+      "id": 1,
+      "title": "Create an App to jot down ideas",
+      "description": "to quickly jot down ideas",
+      "upvotes": 133,
+      "downvotes": 2,
+      "author": "Jochem",
+      "email": "jb@gmail.com",
+      "created": "2018-10-21T13:23:52+00:00"
+  },
+  {
+      "id": 2,
+      "title": "Create a website to jot down ideas",
+      "description": "Let's make an application that allows you to store your idea in the most easiest way possible. And that will display's a random idea each time you visit the page again",
+      "upvotes": 114,
+      "downvotes": 2,
+      "author": "Jochem",
+      "email": "jb@gmail.com",
+      "created": "2018-11-23T13:23:52+00:00"
+  },
+  {
+      "id": 3,
+      "title": "Create a Wall board that shows ideas randomly",
+      "description": "The next idea is to create a wallboard in the office, showing the idea's that are entered in the app.",
+      "upvotes": 134,
+      "downvotes": 0,
+      "author": "Jochem",
+      "email": "jb@gmail.com",
+      "created": "2018-12-24T12:23:52+00:00"
+  },
+  {
+      "id": 4,
+      "title": "Up and Downvote Icons",
+      "description": "The idea can be upvoted and downvotes using arrows or a swipe.",
+      "upvotes": 123,
+      "downvotes": 1,
+      "author": "Jochem",
+      "email": "jb@gmail.com",
+      "created": "2018-12-24T13:33:52+00:00"
+  }
+  ]
+
