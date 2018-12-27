@@ -9,7 +9,6 @@ class App extends Component {
     return <div className="App">
         <Layout>
           <Ideas />
-          <p>button bar</p>
         </Layout>
       </div>;
   }

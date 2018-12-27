@@ -4,14 +4,14 @@ import Splash from "../Splash/Splash";
 
 import './Layout.css';
 
-const layout = props => (
+const Layout = props => (
   <>
-    <Splash />
+    <Splash/>
     <div className="Layout">
-      <Topbar />
+      <Topbar/>
       {props.children}
     </div>
   </>
 );
 
-export default layout;
+export default Layout;

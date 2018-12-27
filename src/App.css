@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
+
 html,body, #root {
   width:100%;
   height: 100%;
@@ -10,23 +11,10 @@ html,body, #root {
   flex-direction: column;
   justify-content: space-between;
   height:100%;
+  overflow: hidden;
 }
 
-.counter {
-  display:flex;
-  justify-content: center;
-  width:100%;
-}
 
-.counter__number {
-  font-size: 7rem;
-  background: #fff;
-  color: #3900C6;
-  border-radius: 50%;
-  /* text-align: center; */
-  width: 9rem;
-  line-height: 9rem;
-}
 
 body {
   /*background: #3900C6;*/
@@ -36,33 +24,19 @@ body {
   background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
 }
 
-button {
-  background:transparent;
-  color:#fff;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  font-size:16px;
-  color: rgba(255,255,255,0.32);
-}
 
-button:hover {
-  color: rgba(255,255,255,0.84);
-}
+/*.counter {*/
+  /*display:flex;*/
+  /*justify-content: center;*/
+  /*width:100%;*/
+/*}*/
 
-.quote {
-  max-height:40%;
-}
-
-.buttons {
-  display:flex;
-  max-width: 20%;
-  justify-content: space-between;
-  align-content: flex-end;
-  margin-left:40%;
-  margin-bottom:30px;
-
-}
-
-
-
+/*.counter__number {*/
+  /*font-size: 7rem;*/
+  /*background: #fff;*/
+  /*color: #3900C6;*/
+  /*border-radius: 50%;*/
+  /*!* text-align: center; *!*/
+  /*width: 9rem;*/
+  /*line-height: 9rem;*/
+/*}*/

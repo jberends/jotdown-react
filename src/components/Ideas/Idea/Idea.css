@@ -25,10 +25,12 @@
   margin: inherit;
   font-size: 50px;
   color: #ffffffdd;
+  transition: opacity .3s ease-out;
 }
 
 .description {
   margin: inherit;
   font-size: 24px;
   color: #ffffffdd;
+  transition: opacity .3s ease-out;
 }

@@ -24,6 +24,7 @@
   background-image: url('/assets/img/vignette.png');
   background-size: 100% 100%;
   transition: opacity 0.3s ease-out;
+  opacity: 0.84;
   /* for testing purposes */
   /*opacity: 0;*/
 }

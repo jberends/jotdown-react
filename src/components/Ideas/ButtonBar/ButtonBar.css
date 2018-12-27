@@ -1,0 +1,25 @@
+.ButtonBar {
+  /*margin: 0 8px 8px 8px;*/
+  /*font-size: 22px;*/
+  color: #ffffffdd;
+  display:flex;
+  max-width: 40%;
+  justify-content: space-between;
+  align-content: flex-end;
+  margin-left:30%;
+  margin-bottom:30px;
+}
+
+.ButtonBar button {
+  background:transparent;
+  color:#fff;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  font-size:16px;
+  color: rgba(255,255,255,0.84);
+}
+
+.ButtonBar button:hover {
+  color: rgba(255,255,255,1);
+}
