@@ -27,8 +27,12 @@ class Ideas extends Component {
     this.randomIdea();
   }
 
-  componentWillUpdate(nextProps, nextState, nextContext) {
-    localStorage.setItem("counter", nextState.counter)
+  // componentWillUpdate(nextProps, nextState, nextContext) {
+  //   localStorage.setItem("counter", nextState.counter)
+  // }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    localStorage.setItem("counter", this.state.counter)
   }
 
   nextIdea() {

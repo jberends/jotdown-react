@@ -1,7 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url("https://fonts.googleapis.com/css?family=Roboto");
 
-html,body, #root {
-  width:100%;
+html,
+body,
+#root {
+  width: 100%;
   height: 100%;
 }
 
@@ -10,33 +12,33 @@ html,body, #root {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height:100%;
+  height: 100%;
+  width: 100%;
   overflow: hidden;
+  position: fixed;
 }
-
-
 
 body {
   /*background: #3900C6;*/
-  color:#fff;
-  font-family: 'Roboto','Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  background-color: #21D4FD;
-  background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+  color: #fff;
+  font-family: "Roboto", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+    sans-serif;
+  background-color: #21d4fd;
+  background-image: linear-gradient(19deg, #21d4fd 0%, #b721ff 100%);
 }
 
-
 /*.counter {*/
-  /*display:flex;*/
-  /*justify-content: center;*/
-  /*width:100%;*/
+/*display:flex;*/
+/*justify-content: center;*/
+/*width:100%;*/
 /*}*/
 
 /*.counter__number {*/
-  /*font-size: 7rem;*/
-  /*background: #fff;*/
-  /*color: #3900C6;*/
-  /*border-radius: 50%;*/
-  /*!* text-align: center; *!*/
-  /*width: 9rem;*/
-  /*line-height: 9rem;*/
+/*font-size: 7rem;*/
+/*background: #fff;*/
+/*color: #3900C6;*/
+/*border-radius: 50%;*/
+/*!* text-align: center; *!*/
+/*width: 9rem;*/
+/*line-height: 9rem;*/
 /*}*/
