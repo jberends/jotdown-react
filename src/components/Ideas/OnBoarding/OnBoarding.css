@@ -1,0 +1,23 @@
+.greeting {
+  margin: inherit;
+  font-size: 50px;
+  color: #ffffffdd;
+}
+
+.greeting .message {
+
+}
+
+.greeting .name {
+  display: inline-block;
+}
+
+.greeting .name[contenteditable="true"] {
+  text-decoration: underline;
+  cursor: auto;
+  border: 0
+}
+
+.greeting .name[contenteditable="true"]:focus {
+  outline: unset;
+}

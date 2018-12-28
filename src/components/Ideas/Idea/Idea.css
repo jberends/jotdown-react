@@ -8,6 +8,7 @@
   /*margin: 0 8px 8px 8px;*/
   width: 100%;
   text-shadow: 0 0 4px rgba(0, 0, 0, 0.34);
+  /*transition: opacity .3s ease;*/
 }
 
 .Idea div {
@@ -25,12 +26,10 @@
   margin: inherit;
   font-size: 50px;
   color: #ffffffdd;
-  transition: opacity .3s ease-out;
 }
 
 .description {
   margin: inherit;
   font-size: 24px;
   color: #ffffffdd;
-  transition: opacity .3s ease-out;
 }

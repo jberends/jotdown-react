@@ -8,7 +8,7 @@ const Layout = props => (
   <>
     <Splash/>
     <div className="Layout">
-      <Topbar/>
+      <Topbar {...props} />
       {props.children}
     </div>
   </>

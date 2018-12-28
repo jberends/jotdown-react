@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 
+
 import "./App.css";
 import Button from "./src-depr/button";
 import Quote from "./src-depr/quote";
 import quotes from "./quotes.json";
+
+
 
 class App extends Component {
   constructor(props) {
@@ -14,6 +17,7 @@ class App extends Component {
     this.randomQuote = this.randomQuote.bind(this);
     this.state = { counter: 1, quoteArrayPosition: 0 };
   }
+
 
   prevQuote() {
     const { quoteArrayPosition } = this.state;
