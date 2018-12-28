@@ -1,27 +1,26 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { Fab, Icon, Tooltip } from "@material-ui/core";
-import { AccountCircle } from "@material-ui/icons";
+
+import {Fab, Icon, Tooltip} from "@material-ui/core";
+import {AccountCircle} from "@material-ui/icons";
+
+import {AppContext} from "../../../App";
 
 import "./Account.css";
 
-export function Account({ account }) {
-  // const account = props.account ? props.account : {};
-
+export function Account() {
   return (
-    <div id="topright" className="Account">
-      <Tooltip title={account.username ? account.username : "Login first"}>
-        <Fab
-          size="small"
-          onDoubleClick={() => localStorage.setItem("account", JSON.stringify({username: null}))}>
-          {account.username ? <Icon>{account.username}</Icon> : <AccountCircle />}</Fab>
-      </Tooltip>
-    </div>
+    <AppContext.Consumer>
+      {({account, logoutHandler}) => (
+        <div id="topright" className="Account">
+          <Tooltip title={account.username ? account.username : "Login first"}>
+            <Fab size="small" onDoubleClick={() => logoutHandler()}>
+              {account.username ? <Icon>{account.username}</Icon> : <AccountCircle/>}
+            </Fab>
+          </Tooltip>
+        </div>
+      )}
+    </AppContext.Consumer>
   );
 }
-
-Account.propTypes = {
-  account: PropTypes.object
-};
 
 export default Account;

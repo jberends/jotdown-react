@@ -1,9 +1,10 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import ideas from "../../ideas.json";
 import Idea from "./Idea/Idea";
 import ButtonBar from "./ButtonBar/ButtonBar";
 import BottomBar from "./BottomBar/BottomBar";
-import OnBoarding from './OnBoarding/OnBoarding';
+import OnBoarding from "./OnBoarding/OnBoarding";
+import { AppContext } from "../../App";
 
 class Ideas extends Component {
   constructor(props) {
@@ -16,14 +17,14 @@ class Ideas extends Component {
       counter: 1,
       ideaArrayPosition: 2,
       numIdeas: ideas.length,
-      account: props.account ? props.account.username: {}
+      account: props.account ? props.account.username : {}
     };
   }
 
   componentWillMount() {
     let localCounter = parseInt(localStorage.getItem("counter"));
     if (localCounter) {
-      this.setState({counter: localCounter});
+      this.setState({ counter: localCounter });
     }
     this.randomIdea();
   }
@@ -37,7 +38,7 @@ class Ideas extends Component {
   }
 
   nextIdea() {
-    const {ideaArrayPosition, numIdeas} = this.state;
+    const { ideaArrayPosition, numIdeas } = this.state;
     if (ideaArrayPosition === numIdeas - 1) {
       this.setState(prevState => ({
         ideaArrayPosition: 0,
@@ -52,7 +53,7 @@ class Ideas extends Component {
   }
 
   prevIdea() {
-    const {ideaArrayPosition, numIdeas} = this.state;
+    const { ideaArrayPosition, numIdeas } = this.state;
     if (ideaArrayPosition === 0) {
       this.setState(prevState => ({
         ideaArrayPosition: numIdeas - 1,
@@ -67,7 +68,7 @@ class Ideas extends Component {
   }
 
   randomIdea() {
-    const {numIdeas} = this.state;
+    const { numIdeas } = this.state;
     const randomIdea = Math.floor(Math.random() * Math.floor(numIdeas - 1));
     this.setState(prevState => ({
       ideaArrayPosition: randomIdea,
@@ -76,31 +77,32 @@ class Ideas extends Component {
   }
 
   resetCounter() {
-    this.setState({counter: 1});
+    this.setState({ counter: 1 });
     localStorage.setItem("counter", 1);
   }
 
   render() {
-    const showIdea=<Idea
-          key={this.state.ideaArrayPosition}
-          idea={ideas[this.state.ideaArrayPosition]}
-        />
+    const showIdea = <Idea key={this.state.ideaArrayPosition} idea={ideas[this.state.ideaArrayPosition]} />;
 
-    const showOnBoarding=<OnBoarding/>
+    const showOnBoarding = (
+      <AppContext.Consumer>
+        {({ registerAccount }) => <OnBoarding registerHandler={registerAccount} />}
+      </AppContext.Consumer>
+    );
 
     return (
-      <>
-        {this.state.account ? showIdea: showOnBoarding}
-        <ButtonBar
-          nextIdea={this.nextIdea}
-          prevIdea={this.prevIdea}
-          randomIdea={this.randomIdea}
-        />
-        <BottomBar
-          counter={this.state.counter}
-          resetCounter={this.resetCounter}
-        />
-      </>
+      <AppContext.Consumer>
+        {({ account }) => {
+          console.log('[Ideas > account @ 96] ', account);
+          return(
+            <>
+              {account && account.username ? showIdea : showOnBoarding}
+              <ButtonBar nextIdea={this.nextIdea} prevIdea={this.prevIdea} randomIdea={this.randomIdea} />
+              <BottomBar counter={this.state.counter} resetCounter={this.resetCounter} />
+            </>
+          )
+        }}
+      </AppContext.Consumer>
     );
   }
 }
