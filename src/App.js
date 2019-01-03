@@ -15,8 +15,7 @@ class App extends Component {
       account:
         localStorage.getItem("account") ?
           JSON.parse(localStorage.getItem("account")) :
-          {username: null}
-      ,
+          {username: null},
       registerAccount: this.registerAccount,
       logoutHandler: this.logout
     };

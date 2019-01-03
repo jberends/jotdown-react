@@ -1,10 +1,13 @@
 import React, { Component } from "react";
+import { AppContext } from "../../App";
+
 import ideas from "../../ideas.json";
 import Idea from "./Idea/Idea";
 import ButtonBar from "./ButtonBar/ButtonBar";
 import BottomBar from "./BottomBar/BottomBar";
 import OnBoarding from "./OnBoarding/OnBoarding";
-import { AppContext } from "../../App";
+import NewIdea from "./NewIdea/NewIdea";
+
 
 class Ideas extends Component {
   constructor(props) {
@@ -13,9 +16,11 @@ class Ideas extends Component {
     this.prevIdea = this.prevIdea.bind(this);
     this.randomIdea = this.randomIdea.bind(this);
     this.resetCounter = this.resetCounter.bind(this);
+    this.newIdea = this.newIdea.bind(this);
     this.state = {
       counter: 1,
       ideaArrayPosition: 2,
+      newIdea: false,
       numIdeas: ideas.length,
       account: props.account ? props.account.username : {}
     };
@@ -76,14 +81,18 @@ class Ideas extends Component {
     }));
   }
 
+  newIdea() {
+    // displays the new idea component, instead of idea.
+    this.setState({newIdea: true})
+  }
+
   resetCounter() {
     this.setState({ counter: 1 });
     localStorage.setItem("counter", 1);
   }
 
   render() {
-    const showIdea = <Idea key={this.state.ideaArrayPosition} idea={ideas[this.state.ideaArrayPosition]} />;
-
+    const showIdea = this.state.newIdea ? <NewIdea/> : <Idea key={this.state.ideaArrayPosition} idea={ideas[this.state.ideaArrayPosition]} />;
     const showOnBoarding = (
       <AppContext.Consumer>
         {({ registerAccount }) => <OnBoarding registerHandler={registerAccount} />}
@@ -97,7 +106,7 @@ class Ideas extends Component {
           return(
             <>
               {account && account.username ? showIdea : showOnBoarding}
-              <ButtonBar nextIdea={this.nextIdea} prevIdea={this.prevIdea} randomIdea={this.randomIdea} />
+              <ButtonBar nextIdea={this.nextIdea} prevIdea={this.prevIdea} newIdea={this.newIdea} randomIdea={this.randomIdea} />
               <BottomBar counter={this.state.counter} resetCounter={this.resetCounter} />
             </>
           )
