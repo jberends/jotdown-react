@@ -9,27 +9,40 @@ import '../OnBoarding/OnBoarding.css'
 class NewIdea extends React.Component {
   constructor(props) {
     super(props);
+    this.defaults = {
+        title: "Give your idea a short title...",
+        description: "Please enter description of the idea..."
+      };
     this.state = {
-      title: "Title here...",
-      description: "description here",
+      title: this.defaults.title,
+      description: this.defaults.description,
     }
-
   }
 
-  handleKeyPress = evt => {
+  handleKeyPress = field => evt => {
     if (evt.key === 'Enter') {
-      this.handleAccountName(evt)
+      this.storeField(field)(evt);
     }
   };
 
-  handleChange = evt => {
-    this.setState({username: evt.target.value});
+  handleChange = field => evt => {
+    this.setState({[field]: evt.target.value});
   };
 
-  handleTitle = evt => {
-    if (this.state.title !== this.welcomeText) {
-      this.props.registerHandler(this.state.title);
+  storeField = field => evt => {
+    if (this.state[field] !== this.defaults[field]) {
+      console.log('storing field', field, this.state[field])
     }
+  };
+
+  handleFocus = evt => {
+    // from: https://stackoverflow.com/questions/6139107/programmatically-select-text-in-a-contenteditable-html-element/6150060#6150060
+    // document.execCommand('selectAll',false,null)
+    const range = document.createRange();
+    range.selectNodeContents(evt.target);
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
   };
 
   render() {
@@ -41,11 +54,21 @@ class NewIdea extends React.Component {
         <ContentEditable
           className="title"
           html={this.state.title}
-          onChange={(evt) => this.setState({title: evt.target.value})}
-          onBlur={this.handleTitle}
-          onKeyPress={this.handleKeyPress}
+          onChange={this.handleChange("title")}
+          onBlur={this.storeField("title")}
+          onKeyPress={this.handleKeyPress("title")}
+          tabIndex="1"
+          onFocus={this.handleFocus}
         />
-        <div className="description">{this.state.description}</div>
+        <ContentEditable
+          className="description"
+          html={this.state.description}
+          onChange={this.handleChange("description")}
+          onBlur={this.storeField("description")}
+          onKeyPress={this.handleKeyPress("description")}
+          tabIndex="2"
+          onFocus={this.handleFocus}
+        />
       </div>
     );
   }
