@@ -5,14 +5,15 @@ import ContentEditable from "react-contenteditable";
 
 import '../Idea/Idea.css';
 import '../OnBoarding/OnBoarding.css'
+import axios from 'axios';
 
 class NewIdea extends React.Component {
   constructor(props) {
     super(props);
     this.defaults = {
-        title: "Give your idea a short title...",
-        description: "Please enter description of the idea..."
-      };
+      title: "Give your idea a short title...",
+      description: "Please enter description of the idea..."
+    };
     this.state = {
       title: this.defaults.title,
       description: this.defaults.description,
@@ -20,7 +21,9 @@ class NewIdea extends React.Component {
   }
 
   handleKeyPress = field => evt => {
+    console.log('[NewIdea > handlekeypress @ 23]', evt.key);
     if (evt.key === 'Enter') {
+      console.log('[NewIdea > Enterkeypressed @ 25] Store the key', evt.key);
       this.storeField(field)(evt);
     }
   };
@@ -43,6 +46,20 @@ class NewIdea extends React.Component {
     const selection = window.getSelection();
     selection.removeAllRanges();
     selection.addRange(range);
+  };
+
+  /**
+   * Stores a new idea to the database and returns a Promise.
+   */
+  postIdeaHandler = () => {
+  console.log('[postIdeaHandler] posting a new idea', this.state);
+    const data = {
+      title: this.state.title,
+      description: this.state.description
+    };
+    return axios.post("https://my-json-server.typicode.com/jberends/jotdown-react/ideas", data)
+      .then(response => (console.log('[postIdeahandler] done posting new idea', response)))
+      .catch(error => (console.log('[postIdeaHandler] failed to post a new idea', error )))
   };
 
   render() {
@@ -69,6 +86,7 @@ class NewIdea extends React.Component {
           tabIndex="2"
           onFocus={this.handleFocus}
         />
+        <button onClick={this.postIdeaHandler}>Add Idea to server</button>
       </div>
     );
   }
