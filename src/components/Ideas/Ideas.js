@@ -62,12 +62,14 @@ class Ideas extends Component {
     if (ideaArrayPosition === numIdeas - 1) {
       this.setState(prevState => ({
         ideaArrayPosition: 0,
-        counter: prevState.counter + 1
+        counter: prevState.counter + 1,
+        newIdea: false
       }));
     } else {
       this.setState(prevState => ({
         ideaArrayPosition: prevState.ideaArrayPosition + 1,
-        counter: prevState.counter + 1
+        counter: prevState.counter + 1,
+        newIdea: false
       }));
     }
   }
@@ -77,12 +79,14 @@ class Ideas extends Component {
     if (ideaArrayPosition === 0) {
       this.setState(prevState => ({
         ideaArrayPosition: numIdeas - 1,
-        counter: prevState.counter + 1
+        counter: prevState.counter + 1,
+        newIdea: false
       }));
     } else {
       this.setState(prevState => ({
         ideaArrayPosition: prevState.ideaArrayPosition - 1,
-        counter: prevState.counter + 1
+        counter: prevState.counter + 1,
+        newIdea: false
       }));
     }
   }
@@ -92,7 +96,8 @@ class Ideas extends Component {
     const randomIdea = Math.floor(Math.random() * Math.floor(numIdeas - 1));
     this.setState(prevState => ({
       ideaArrayPosition: randomIdea,
-      counter: prevState.counter + 1
+      counter: prevState.counter + 1,
+      newIdea: false
     }));
   }
 

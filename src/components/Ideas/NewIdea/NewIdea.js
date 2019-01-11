@@ -1,6 +1,7 @@
 import React from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faLightbulb} from "@fortawesome/free-regular-svg-icons/faLightbulb";
+import {faSave} from '@fortawesome/free-regular-svg-icons/faSave';
 import ContentEditable from "react-contenteditable";
 
 import '../Idea/Idea.css';
@@ -52,14 +53,14 @@ class NewIdea extends React.Component {
    * Stores a new idea to the database and returns a Promise.
    */
   postIdeaHandler = () => {
-  console.log('[postIdeaHandler] posting a new idea', this.state);
+    console.log('[postIdeaHandler] posting a new idea', this.state);
     const data = {
       title: this.state.title,
       description: this.state.description
     };
     return axios.post("https://my-json-server.typicode.com/jberends/jotdown-react/ideas", data)
       .then(response => (console.log('[postIdeahandler] done posting new idea', response)))
-      .catch(error => (console.log('[postIdeaHandler] failed to post a new idea', error )))
+      .catch(error => (console.log('[postIdeaHandler] failed to post a new idea', error)))
   };
 
   render() {
@@ -86,7 +87,9 @@ class NewIdea extends React.Component {
           tabIndex="2"
           onFocus={this.handleFocus}
         />
-        <button onClick={this.postIdeaHandler}>Add Idea to server</button>
+        <button className="button" onClick={this.deleteIdeaHandler}>
+          <FontAwesomeIcon icon={faSave}/> Save idea
+        </button>
       </div>
     );
   }
