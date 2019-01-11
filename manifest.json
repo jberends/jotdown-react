@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "JotDown",
+  "description": "Jotdown new ideas that pop in your head, and show them each time opening a new tab.",
+  "version": "1",
+  "author": "Jochem Berends",
+  "browser_action": {
+    "default_icon": "assets/favicons/favicon.png",
+    "default_title": "Jotdown"
+  },
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "permissions": [
+    "activeTab"
+  ]
+}
