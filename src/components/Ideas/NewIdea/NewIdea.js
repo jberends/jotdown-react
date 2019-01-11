@@ -6,7 +6,7 @@ import ContentEditable from "react-contenteditable";
 
 import '../Idea/Idea.css';
 import '../OnBoarding/OnBoarding.css'
-import axios from 'axios';
+import {ideasApi} from '../../../services';
 
 class NewIdea extends React.Component {
   constructor(props) {
@@ -58,7 +58,7 @@ class NewIdea extends React.Component {
       title: this.state.title,
       description: this.state.description
     };
-    return axios.post("https://my-json-server.typicode.com/jberends/jotdown-react/ideas", data)
+    return ideasApi.post("https://my-json-server.typicode.com/jberends/jotdown-react/ideas", data)
       .then(response => (console.log('[postIdeahandler] done posting new idea', response)))
       .catch(error => (console.log('[postIdeaHandler] failed to post a new idea', error)))
   };
