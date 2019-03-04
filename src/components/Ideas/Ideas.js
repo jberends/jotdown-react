@@ -6,6 +6,7 @@ import BottomBar from "./BottomBar/BottomBar";
 import OnBoarding from "./OnBoarding/OnBoarding";
 import NewIdea from "./NewIdea/NewIdea";
 import axios from "axios";
+import { ideasStore } from "../../firebaseApi";
 
 class Ideas extends Component {
   constructor(props) {
@@ -37,7 +38,21 @@ class Ideas extends Component {
   }
 
   componentDidMount() {
+    // this.retrieveIdeaFirestoreHandler().then(this.randomIdea())
     this.retrieveIdeaHandler().then(this.randomIdea())
+  }
+
+
+  retrieveIdeaFirestoreHandler = () => {
+    return ideasStore.get()
+    .then((snapshot) => {
+      snapshot.forEach((doc) => {
+        console.log(doc.id, '=>', doc.data());
+      })
+    })
+    .catch((err) => {
+      console.log('Error getting documents', err);
+    })
   }
 
   /**
