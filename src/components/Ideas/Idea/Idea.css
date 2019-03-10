@@ -61,3 +61,15 @@ button {
 .button.delete:hover {
   background-color: rgba(255, 0, 0, 0.54);
 }
+
+.ButtonBar {
+  /*margin: 0 8px 8px 8px;*/
+  /*font-size: 22px;*/
+  color: #ffffffdd;
+  display:flex;
+  max-width: 40%;
+  justify-content: space-between;
+  align-content: flex-end;
+  margin-left:30%;
+  margin-bottom:30px;
+}

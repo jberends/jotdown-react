@@ -5,7 +5,6 @@ import ButtonBar from "./ButtonBar/ButtonBar";
 import BottomBar from "./BottomBar/BottomBar";
 import OnBoarding from "./OnBoarding/OnBoarding";
 import NewIdea from "./NewIdea/NewIdea";
-import axios from "axios";
 import {ideasStore} from "../../firebaseApi";
 
 class Ideas extends Component {
@@ -40,7 +39,9 @@ class Ideas extends Component {
   componentDidMount() {
     this.retrieveIdeaFirestoreHandler();
     this.randomIdea();
-    //this.retrieveIdeaHandler().then(this.randomIdea())
+  }
+
+  componentWillUnmount() {
   }
 
   retrieveIdeaFirestoreHandler = () => {
@@ -58,27 +59,9 @@ class Ideas extends Component {
             numIdeas: responses.docs.length,
             ideaArrayPosition: 0
           });
-          console.log('ideas',)
         }
       )
       .catch(error => (console.log('[retrieveIdeaFirestoreHandler] failed to retrieve ideas', error)))
-  };
-
-  /**
-   * Retrievs the list of ideas from the server.
-   * @returns {Promise<AxiosResponse<any> | never>}
-   */
-  retrieveIdeaHandler = () => {
-    // retrieves the list of ideas from server asynchronous and returnes a AxiosPromise
-    return axios.get("https://my-json-server.typicode.com/jberends/jotdown-react/ideas")
-      .then(response => {
-        this.setState({
-          ideas: response.data,
-          numIdeas: response.data.length,
-          ideaArrayPosition: 0
-        })
-      })
-      .catch(error => (console.log('[retrieveIdeaHandler] failed to retrieve ideas', error)))
   };
 
   nextIdea() {
@@ -117,7 +100,7 @@ class Ideas extends Component {
 
   randomIdea() {
     const {numIdeas} = this.state;
-    let randomIdea= this.state.ideaArrayPosition;
+    let randomIdea = this.state.ideaArrayPosition;
     while (randomIdea === this.state.ideaArrayPosition) {
       randomIdea = Math.floor(Math.random() * Math.floor(numIdeas - 1));
     }

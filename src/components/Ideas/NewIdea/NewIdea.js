@@ -69,10 +69,12 @@ class NewIdea extends React.Component {
   postIdeaFSHandler = () => {
     console.log('[postIdeaFSHandler] posting a new idea', this.state);
     const account = JSON.parse(localStorage.getItem("account"));
+    firestore.CollectionReference('teams').doc(account.team)
     const data = {
       title: this.state.title,
       description: this.state.description,
-      author: account ? account.username : null,
+      username: account ? account.username : null,
+      team: account.team ? account.team : null,
       created: firestore.Timestamp.now()
     };
     ideasStore.doc().set(data)
