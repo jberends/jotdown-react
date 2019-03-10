@@ -5,6 +5,7 @@ import {faLightbulb} from "@fortawesome/free-regular-svg-icons/faLightbulb";
 import {faTrashAlt} from "@fortawesome/free-regular-svg-icons/faTrashAlt";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import {ideasApi} from "../../../services";
+import {ideasStore} from "../../../firebaseApi";
 
 class Idea extends Component {
   deleteIdeaHandler = () => {
@@ -17,6 +18,9 @@ class Idea extends Component {
 
   deleteIdeaFSHandler = () => {
     console.log("[deleteIdeaFSHandler] deleting an idea", this.props.idea);
+    ideasStore.doc(this.props.idea.id).delete()
+      .then(doc => (console.log('delete finished of idea', this.props.idea)))
+      .catch(err => console.log('oops, something happened during deletion', err))
   };
 
   render() {

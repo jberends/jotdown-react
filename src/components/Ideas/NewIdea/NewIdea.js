@@ -1,4 +1,6 @@
 import React from 'react';
+import {firestore} from "firebase";
+
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faLightbulb} from "@fortawesome/free-regular-svg-icons/faLightbulb";
 import {faSave} from '@fortawesome/free-regular-svg-icons/faSave';
@@ -8,7 +10,6 @@ import '../Idea/Idea.css';
 import '../OnBoarding/OnBoarding.css'
 import {ideasApi} from '../../../services';
 import {ideasStore} from "../../../firebaseApi";
-import {Timestamp} from "firebase";
 
 class NewIdea extends React.Component {
   constructor(props) {
@@ -72,7 +73,7 @@ class NewIdea extends React.Component {
       title: this.state.title,
       description: this.state.description,
       author: account ? account.username : null,
-      created: Timestamp.fromDate()
+      created: firestore.Timestamp.now()
     };
     ideasStore.doc().set(data)
       .then(doc => {
