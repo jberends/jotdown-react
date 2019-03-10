@@ -6,7 +6,7 @@ import BottomBar from "./BottomBar/BottomBar";
 import OnBoarding from "./OnBoarding/OnBoarding";
 import NewIdea from "./NewIdea/NewIdea";
 import axios from "axios";
-import { ideasStore } from "../../firebaseApi";
+import {ideasStore} from "../../firebaseApi";
 
 class Ideas extends Component {
   constructor(props) {
@@ -38,22 +38,31 @@ class Ideas extends Component {
   }
 
   componentDidMount() {
-    // this.retrieveIdeaFirestoreHandler().then(this.randomIdea())
-    this.retrieveIdeaHandler().then(this.randomIdea())
+    this.retrieveIdeaFirestoreHandler();
+    this.randomIdea();
+    //this.retrieveIdeaHandler().then(this.randomIdea())
   }
-
 
   retrieveIdeaFirestoreHandler = () => {
-    return ideasStore.get()
-    .then((snapshot) => {
-      snapshot.forEach((doc) => {
-        console.log(doc.id, '=>', doc.data());
-      })
-    })
-    .catch((err) => {
-      console.log('Error getting documents', err);
-    })
-  }
+    ideasStore.get()
+      .then(responses => {
+          responses.forEach(idea => {
+            console.log(idea.id, '=>', idea.data());
+          });
+          this.setState({
+            ideas: responses.docs.map(doc => {
+              const rec = doc.data();
+              rec.id = doc.id;
+              return rec;
+            }),
+            numIdeas: responses.docs.length,
+            ideaArrayPosition: 0
+          });
+          console.log('ideas',)
+        }
+      )
+      .catch(error => (console.log('[retrieveIdeaFirestoreHandler] failed to retrieve ideas', error)))
+  };
 
   /**
    * Retrievs the list of ideas from the server.
@@ -108,7 +117,10 @@ class Ideas extends Component {
 
   randomIdea() {
     const {numIdeas} = this.state;
-    const randomIdea = Math.floor(Math.random() * Math.floor(numIdeas - 1));
+    let randomIdea= this.state.ideaArrayPosition;
+    while (randomIdea === this.state.ideaArrayPosition) {
+      randomIdea = Math.floor(Math.random() * Math.floor(numIdeas - 1));
+    }
     this.setState(prevState => ({
       ideaArrayPosition: randomIdea,
       counter: prevState.counter + 1,

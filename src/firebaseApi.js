@@ -1,8 +1,8 @@
 import firebase from 'firebase';
 
-console.log('[process.env] ', process.env );
+// console.log('[process.env] ', process.env );
 
-export default firebase.initializeApp({
+const firestore = firebase.initializeApp({
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
   databaseURL: process.env.REACT_APP_DATABASE_URL,
@@ -11,8 +11,6 @@ export default firebase.initializeApp({
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
 });
 
-export const ideasStore = () => {
-  const db = firebase.firestore()
-  db.settings({timestampsInSnapshots: true})
-  return db.collection('ideas')
-}
+export default firestore;
+export const db = firestore.firestore();
+export const ideasStore = db.collection('ideas');

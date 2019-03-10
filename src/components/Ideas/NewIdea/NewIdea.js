@@ -7,6 +7,8 @@ import ContentEditable from "react-contenteditable";
 import '../Idea/Idea.css';
 import '../OnBoarding/OnBoarding.css'
 import {ideasApi} from '../../../services';
+import {ideasStore} from "../../../firebaseApi";
+import {Timestamp} from "firebase";
 
 class NewIdea extends React.Component {
   constructor(props) {
@@ -63,6 +65,21 @@ class NewIdea extends React.Component {
       .catch(error => (console.log('[postIdeaHandler] failed to post a new idea', error)))
   };
 
+  postIdeaFSHandler = () => {
+    console.log('[postIdeaFSHandler] posting a new idea', this.state);
+    const account = JSON.parse(localStorage.getItem("account"));
+    const data = {
+      title: this.state.title,
+      description: this.state.description,
+      author: account ? account.username : null,
+      created: Timestamp.fromDate()
+    };
+    ideasStore.doc().set(data)
+      .then(doc => {
+        console.log('Added document with ID: ', doc);
+      });
+  };
+
   render() {
     return (
       <div className="Idea center">
@@ -87,7 +104,7 @@ class NewIdea extends React.Component {
           tabIndex="2"
           onFocus={this.handleFocus}
         />
-        <button className="button" onClick={this.deleteIdeaHandler}>
+        <button className="button" onClick={this.postIdeaFSHandler}>
           <FontAwesomeIcon icon={faSave}/> Save idea
         </button>
       </div>

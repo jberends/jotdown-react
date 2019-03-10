@@ -11,13 +11,12 @@
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
     "axios": "^0.18.0",
-    "firebase": "^5.8.5",
     "i": "^0.3.6",
-    "npm": "^6.8.0",
-    "react": "^16.8.3",
     "react-contenteditable": "^3.2.6",
-    "react-dom": "^16.8.3",
-    "react-scripts": "2.1.5"
+    "firebase": "^5.8.6",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-scripts": "2.1.8"
   },
   "scripts": {
     "start": "react-scripts start",

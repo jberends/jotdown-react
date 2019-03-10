@@ -15,6 +15,10 @@ class Idea extends Component {
       .catch(error => console.log("[deleteDataHandler] failed to delete an idea", error));
   };
 
+  deleteIdeaFSHandler = () => {
+    console.log("[deleteIdeaFSHandler] deleting an idea", this.props.idea);
+  };
+
   render() {
     return this.props.idea ? (
       <div className="Idea center">
@@ -23,7 +27,7 @@ class Idea extends Component {
         </div>
         <div className="title">{this.props.idea.title}</div>
         <div className="description">{this.props.idea.description}</div>
-        <button className="button delete" onClick={this.deleteIdeaHandler}>
+        <button className="button delete" onClick={this.deleteIdeaFSHandler}>
           <FontAwesomeIcon icon={faTrashAlt}/> Delete idea
         </button>
       </div>
